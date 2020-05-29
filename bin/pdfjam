@@ -1110,7 +1110,7 @@ then
     error_exit "no write permission at ${outFile}" $E_CANTCREATE
 fi
 #fileSize=$(wc -c < "$fileName.pdf" | sed 's/^\ *//')
-## The following choice of redirection might improve pipelines on Cygwin.
+## Avoid explicit output to /dev/stdout.
 if test x"$outFile" = x"/dev/stdout" \
    && cat "$fileName".pdf 2> /dev/null \
    || cat "$fileName".pdf > "$outFile" 2>/dev/null
